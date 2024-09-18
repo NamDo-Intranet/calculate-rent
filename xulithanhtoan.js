@@ -37,6 +37,7 @@ function formatMoney(amount) {
     return amount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
+
 // Hàm tính tổng tiền (gồm tiền phòng, tiền điện và tiền nước)
 function tinhTien() {
     // Lấy giá trị tiền phòng đã định dạng
@@ -83,15 +84,16 @@ function clearForm() {
         document.getElementById('old_electricity').value = '';
         document.getElementById('new_electricity').value = '';
         document.getElementById('electricity_cost').value = '';
-        document.getElementById('people').value = 0;// Đặt số người dùng nước về mức 0
+        document.getElementById('people').value = '';// Đặt số người dùng nước về mức 0
         document.getElementById('result').textContent = "Đã xoá xong!";
     } else {
         // Hiển thị thông báo nếu không có thông tin nào để xoá
         document.getElementById('result').textContent = "Not information to delete";
     }
 
-    // Xóa thông báo sau 30 giây (30000 ms)
+    // Xóa thông báo sau 3 giây (3000 ms)
     setTimeout(function () {
         document.getElementById('result').textContent = '';
-    }, 10000);
+    }, 3000);
 }
+

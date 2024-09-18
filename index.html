@@ -24,7 +24,7 @@
                 <!-- Phần hiển thị tổng tiền điện -->
                 <div class="electricity-result">
                     <label for="electricity_cost">Tổng tiền điện:</label>
-                    <input type="text" id="electricity_cost" class="form-input" placeholder="Tiền điện (VND)" readonly>
+                    <input type="text" id="electricity_cost" class="form-input" placeholder="3k/1 kí điện (VND)" readonly>
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
 
             <div class="form-group">
                 <label for="people">Số người sử dụng nước:</label>
-                <input type="number" id="people" class="form-input" placeholder="30k/1 người (số người)">
+                <input type="number" id="people" class="form-input" min='0' placeholder="30k/1 người" oninput="this.value = Math.abs(this.value)" />
             </div>
 
             <div class="submit-section">

@@ -1,42 +1,68 @@
 /* CSS cơ bản để làm đẹp giao diện */
-
 body {
-    font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
-    font-weight: bold;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(https://chothuestudio.com/wp-content/uploads/2023/10/6-1.jpg);
+    /* Sử dụng `vh` để đảm bảo nội dung luôn chiếm toàn bộ chiều cao của màn hình */
 }
 
+/* Đảm bảo container luôn nằm giữa màn hình và co giãn theo thiết bị */
 .container {
-    width: 410px;
-    margin: 0 auto;
-    padding: 50px;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOP7OA8zmZfOVVvm9c7lzmrFKKKzIkTflX3Q&s);
+    background-size: cover;
+    background-position: center;
+    box-sizing: border-box;
 }
 
+/* Tiêu đề */
 h1 {
     text-align: center;
-    color:#005500;
-    font-weight: bold;
+    color: #005500;
+    font-size: 1.8rem;
 }
 
+/* Các nhóm form */
 .form-group {
     margin-bottom: 20px;
     margin-top: 20px;
 }
 
+/* Nhãn cho input */
 label {
     display: block;
     margin-bottom: 5px;
     color: #555;
 }
 
+/* Ô nhập liệu */
 input.form-input, input.form-input-short {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    box-sizing: border-box;
+}
+
+#old_electricity{
+    height: 3vh;
+    border-radius: 5px;
+}
+
+#new_electricity{
+    height: 3vh;
+    border-radius: 5px;
 }
 
 input.form-input {
@@ -44,24 +70,24 @@ input.form-input {
 }
 
 input.form-input-short {
-    width: 100px;
+    width: 48%;
 }
 
+/* Căn chỉnh chỉ số điện */
 .electricity-group {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-.electricity-result {
-    padding-top: 20px;
-}
-
+/* Ô nhập không cho chỉnh sửa */
 input[readonly] {
     background-color: #f9f9f9;
     color: #888;
     cursor: not-allowed;
 }
 
+/* Các nút submit và clear */
 .submit-section {
     text-align: center;
 }
@@ -89,25 +115,14 @@ button.submit-btn:hover {
     background-color: #218838;
 }
 
-.short-inputs #old_electricity{
-    height: 25px;
-    border-radius: 5px;
-    color: #555;
-}
-
-.short-inputs #new_electricity{
-    height: 25px;
-    border-radius: 5px;
-    color: #555;
-}
-
+/* Kết quả hiển thị */
 .result {
     text-align: center;
     margin-top: 20px;
 }
 
 .result h2 {
-    color:#2F4F4F;
+    color: #2F4F4F;
 }
 
 .result p {
@@ -115,3 +130,55 @@ button.submit-btn:hover {
     color: #333;
 }
 
+/* Media Queries: Giao diện Responsive cho màn hình nhỏ hơn */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        margin: 10px;
+    }
+    
+    .form-input, .form-input-short {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .form-input-short {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    button.submit-btn, button.clear-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .result p {
+        font-size: 16px;
+    }
+}
+
+/* Media Queries: Giao diện Responsive cho màn hình điện thoại nhỏ */
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    button.submit-btn, button.clear-btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .result p {
+        font-size: 14px;
+    }
+}
