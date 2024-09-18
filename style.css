@@ -1,0 +1,117 @@
+/* CSS cơ bản để làm đẹp giao diện */
+
+body {
+    font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
+    font-weight: bold;
+}
+
+.container {
+    width: 410px;
+    margin: 0 auto;
+    padding: 50px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOP7OA8zmZfOVVvm9c7lzmrFKKKzIkTflX3Q&s);
+}
+
+h1 {
+    text-align: center;
+    color:#005500;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input.form-input, input.form-input-short {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input.form-input {
+    width: 100%;
+}
+
+input.form-input-short {
+    width: 100px;
+}
+
+.electricity-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.electricity-result {
+    padding-top: 20px;
+}
+
+input[readonly] {
+    background-color: #f9f9f9;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.submit-section {
+    text-align: center;
+}
+
+button.submit-btn, button.clear-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button.clear-btn {
+    background-color: #dc3545;
+}
+
+button.clear-btn:hover {
+    background-color: #c82333;
+}
+
+button.submit-btn:hover {
+    background-color: #218838;
+}
+
+.short-inputs #old_electricity{
+    height: 25px;
+    border-radius: 5px;
+    color: #555;
+}
+
+.short-inputs #new_electricity{
+    height: 25px;
+    border-radius: 5px;
+    color: #555;
+}
+
+.result {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.result h2 {
+    color:#2F4F4F;
+}
+
+.result p {
+    font-size: 18px;
+    color: #333;
+}
+

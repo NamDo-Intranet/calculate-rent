@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính tiền phòng trọ</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="xulithanhtoan.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Tính tiền phòng trọ</h1>
+        <form id="rentForm">
+            <div class="electricity-group">
+                <!-- Phần nhập chỉ số điện cũ và mới -->
+                <div class="short-inputs">
+                    <label for="old_electricity">Chỉ số điện cũ:</label>
+                    <input type="text" id="old_electricity" maxlength="6" placeholder="6 số trên đồng hồ điện">
+                    
+                    <label for="new_electricity">Chỉ số điện mới:</label>
+                    <input type="text" id="new_electricity" maxlength="6" placeholder="6 số trên đồng hồ điện">
+                </div>
+                
+                <!-- Phần hiển thị tổng tiền điện -->
+                <div class="electricity-result">
+                    <label for="electricity_cost">Tổng tiền điện:</label>
+                    <input type="text" id="electricity_cost" class="form-input" placeholder="Tiền điện (VND)" readonly>
+                </div>
+            </div>
+
+            <!-- Các phần nhập liệu khác -->
+            <div class="form-group">
+                <label for="rent">Tiền phòng:</label>
+                <input type="text" id="rent" class="form-input" placeholder="0 (VND)">
+            </div>
+
+            <div class="form-group">
+                <label for="people">Số người sử dụng nước:</label>
+                <input type="number" id="people" class="form-input" placeholder="30k/1 người (số người)">
+            </div>
+
+            <div class="submit-section">
+                <button type="button" class="submit-btn" onclick="tinhTien()">Tính tiền</button>
+                <button type="button" class="clear-btn" onclick="clearForm()">Clear</button>
+            </div>
+
+            <div class="result">
+                <h2>Tổng Số Tiền Cần Thanh Toán</h2>
+                <p id="result"></p>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
