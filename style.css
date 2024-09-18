@@ -92,7 +92,7 @@ input[readonly] {
     text-align: center;
 }
 
-button.submit-btn, button.clear-btn {
+button.submit-btn, button.clear-btn, button.qr-btn {
     padding: 10px 20px;
     margin: 5px;
     background-color: #28a745;
@@ -107,12 +107,20 @@ button.clear-btn {
     background-color: #dc3545;
 }
 
+button.qr-btn {
+    background-color: #007bff;
+}
+
 button.clear-btn:hover {
     background-color: #c82333;
 }
 
 button.submit-btn:hover {
     background-color: #218838;
+}
+
+button.qr-btn:hover {
+    background-color: #0056b3;
 }
 
 /* Kết quả hiển thị */
@@ -128,6 +136,97 @@ button.submit-btn:hover {
 .result p {
     font-size: 18px;
     color: #333;
+}
+
+/* Popup QR Code ở giữa màn hình */
+.qr-popup {
+    display: none; /* Mặc định ẩn */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Nội dung bên trong popup */
+.qr-popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    display: flex; /* Sử dụng Flexbox để căn giữa nội dung */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    max-width: 80vw; /* Chiều rộng tối đa của khung popup */
+    max-height: 80vh; /* Chiều cao tối đa của khung popup */
+}
+
+.qr-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.qr-close-btn:hover {
+    background: #c82333;
+}
+
+/* Nút đóng popup */
+.qr-content .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #000;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.qr-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.qr-content .close:hover {
+    color: #ff0000;
+}
+
+/* Hình ảnh mã QR */
+.qr-content img {
+    max-width: 30%;
+    max-height: 50%;
+    object-fit: cover;
+    display: block; /* Đảm bảo hình ảnh là một khối */
+    margin: 0 auto; /* Căn giữa theo chiều ngang */
+}
+
+
+/* Nút xuất dữ liệu */
+button#exportDataBtn {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #17a2b8; /* Màu xanh biển nhẹ */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 auto;
+    margin-top: 1%;
+}
+
+button#exportDataBtn:hover {
+    background-color: #138496; /* Màu đậm hơn khi hover */
 }
 
 /* Media Queries: Giao diện Responsive cho màn hình nhỏ hơn */

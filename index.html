@@ -42,15 +42,23 @@
             <div class="submit-section">
                 <button type="button" class="submit-btn" onclick="tinhTien()">Tính tiền</button>
                 <button type="button" class="clear-btn" onclick="clearForm()">Clear</button>
+                <button type="button" class="qr-btn" onclick="showQRCode()">Hiển thị mã QR</button>
+                <!-- Thêm nút xuất dữ liệu sau khi bấm tính tiền thành công -->
+                <button id="exportDataBtn" class="export-btn" style="display:none;" onclick="exportData()">Xuất Dữ Liệu</button>
             </div>
 
             <div class="result">
                 <h2>Tổng Số Tiền Cần Thanh Toán</h2>
                 <p id="result"></p>
             </div>
+            <!-- Popup chứa mã QR -->
+            <div id="qrPopup" class="qr-popup">
+                <div class="qr-content">
+                    <img id="qrCodeImg" src="QR.jpg" alt="Mã QR Chuyển khoản">
+                    <button class="qr-close-btn" onclick="hideQRCode()">X</button>
+                </div>
+            </div>
         </form>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>

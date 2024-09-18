@@ -37,6 +37,48 @@ function formatMoney(amount) {
     return amount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
+// Hàm xuất dữ liệu ra file TXT
+function exportData() {
+    // Lấy dữ liệu từ các ô nhập liệu
+    let oldElectricity = document.getElementById('old_electricity').value;
+    let newElectricity = document.getElementById('new_electricity').value;
+    let electricityCost = document.getElementById('electricity_cost').value;
+    let tienphongtro = document.getElementById('rent').value;
+    let people = document.getElementById('people').value;
+    let totalCost = document.getElementById('result').textContent;
+
+    // Lấy ngày giờ hiện tại
+    let currentDate = new Date();
+    let date = currentDate.toLocaleDateString();
+    let time = currentDate.toLocaleTimeString();
+
+    // Tạo nội dung file TXT với các thông tin
+    let txtContent = `
+    Ngày: ${date}
+    Giờ: ${time}
+    Chỉ số điện cũ: ${oldElectricity}
+    Chỉ số điện mới: ${newElectricity}
+    Tiền phòng: ${tienphongtro}
+    Tổng tiền điện: ${electricityCost}
+    Số người dùng nước: ${people}
+    Tổng tiền cần thanh toán: ${totalCost.replace('Tổng tiền: ', '')}
+    `;
+
+    // Tạo một Blob từ dữ liệu TXT
+    let blob = new Blob([txtContent], { type: 'text/plain;charset=utf-8;' });
+
+    // Tạo một thẻ a để tải file TXT
+    let link = document.createElement("a");
+    let url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
+    link.setAttribute("download", `hoa_don_${date}.txt`);
+    link.style.visibility = 'hidden';
+
+    // Thêm link vào DOM và bấm tự động để tải
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
 
 // Hàm tính tổng tiền (gồm tiền phòng, tiền điện và tiền nước)
 function tinhTien() {
@@ -68,6 +110,8 @@ function tinhTien() {
 
     // Hiển thị kết quả tổng tiền
     document.getElementById('result').textContent = `Tổng tiền: ${formatMoney(total)} VND`;
+    // Hiển thị nút xuất dữ liệu
+    document.getElementById('exportDataBtn').style.display = 'block';
 }
 
 // Hàm Clear để xoá tất cả dữ liệu
@@ -97,3 +141,35 @@ function clearForm() {
     }, 3000);
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Kiểm tra trạng thái mã QR khi trang được tải
+    if (localStorage.getItem('qrDisplayed') === 'true') {
+        document.getElementById('qrPopup').style.display = 'flex';
+    } else {
+        document.getElementById('qrPopup').style.display = 'none';
+    }
+});
+
+// Hiển thị QR code
+function showQRCode() {
+    let totalCost = document.getElementById('result').textContent;
+    if (totalCost) {
+        // Hiển thị popup
+        document.getElementById('qrPopup').style.display = 'flex';
+        
+        // Lưu trạng thái mã QR là đã hiển thị
+        localStorage.setItem('qrDisplayed', 'true');
+        
+        // Thay thế src bằng mã QR của bạn (có thể sử dụng URL động nếu cần)
+        document.getElementById('qrCodeImg').src = 'QR.jpg'; // Thay đường dẫn hình ảnh mã QR của bạn
+    } else {
+        alert("Vui lòng tính tiền trước khi hiển thị mã QR!");
+    }
+}
+
+function hideQRCode() {
+    document.getElementById('qrPopup').style.display = 'none';
+    
+    // Lưu trạng thái mã QR là đã ẩn
+    localStorage.setItem('qrDisplayed', 'false');
+}
