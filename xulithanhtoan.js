@@ -67,17 +67,30 @@ function exportData() {
     // Tạo một Blob từ dữ liệu TXT
     let blob = new Blob([txtContent], { type: 'text/plain;charset=utf-8;' });
 
-    // Tạo một thẻ a để tải file TXT
-    let link = document.createElement("a");
-    let url = URL.createObjectURL(blob);
-    link.setAttribute("href", url);
-    link.setAttribute("download", `hoa_don_${date}.txt`);
-    link.style.visibility = 'hidden';
+    // Kiểm tra xem thiết bị có hỗ trợ Blob hay không
+    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        // Trình duyệt IE hoặc Edge
+        window.navigator.msSaveOrOpenBlob(blob, `hoa_don_${date}.txt`);
+    } else {
+        // Tạo một thẻ a để tải file TXT
+        let link = document.createElement("a");
+        let url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", `hoa_don_${date}.txt`);
+        link.style.visibility = 'hidden';
 
-    // Thêm link vào DOM và bấm tự động để tải
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+        // Thêm link vào DOM và bấm tự động để tải
+        document.body.appendChild(link);
+
+        // Tải file cho các trình duyệt hỗ trợ tốt việc tải file
+        link.click();
+
+        // Xóa đối tượng link sau khi tải xong
+        document.body.removeChild(link);
+
+        // Giải phóng URL object sau khi không còn dùng nữa
+        URL.revokeObjectURL(url);
+    }
 }
 
 // Hàm tính tổng tiền (gồm tiền phòng, tiền điện và tiền nước)
